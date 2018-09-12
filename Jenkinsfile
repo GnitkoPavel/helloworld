@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('SCM') {
             steps {
-                git url: 'https://git.epam.com/epm-rdua/EPMRDUAMSC.git", credentialsId: "bc5bf332-0191-424e-9593-44c8aa4e149c", branch: "develop_backend'
+                git url: 'https://git.epam.com/epm-rdua/EPMRDUAMSC.git", credentialsId: "f69123a6-e99a-445b-bf50-5579a2f0aeef", branch: "develop_backend'
             }
         }
         stage('Sonarqube') {
