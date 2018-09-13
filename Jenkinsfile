@@ -27,12 +27,26 @@ pipeline {
         
         
         }
-        stage('Notification') {
-            success {
-            mail to: 'admin@lawstrust.com',
-            subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
-            body: "${env.BUILD_URL} has result ${currentBuild.result}"
-            }
-        }
+        
     }
+    post {
+    success {
+      emailext (
+          subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+          body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+            <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+          recipients: "admin@lawstrust.com"
+        )
+    }
+
+    failure {
+      emailext (
+          subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+          body: """<p>FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+            <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+          recipients: "admin@lawstrust.com"
+        )
+    }
+  }
+}
 }
