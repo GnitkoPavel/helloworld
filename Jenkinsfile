@@ -38,6 +38,11 @@ pipeline {
                 sh "curl -uadmin:APB3jbjMzXFGdhFB9e6dsb3787c -T target/hello-world-war-1.0.0.war 'http://192.168.60.8:8081/artifactory/helloworld/hello-world-${env.BUILD_NUMBER}.war'"
             }
         }
+        stage('Deploy to wildfly server') {
+            steps {
+                sh "scp target/hello-world-war-1.0.0.war .dodeploy root@192.168.60.7:/opt/wildfly/standalone/deployments/hello-world-${env.BUILD_NUMBER}.war"
+            }
+        }
         
     }
     post {
