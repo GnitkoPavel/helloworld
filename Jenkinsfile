@@ -40,7 +40,8 @@ pipeline {
         }
         stage('Deploy to wildfly server') {
             steps {
-                sh "scp target/hello-world-war-1.0.0.war .dodeploy root@192.168.60.7:/opt/wildfly/standalone/deployments/hello-world-${env.BUILD_NUMBER}.war"
+                sh "scp target/hello-world-war-1.0.0.war 'root@192.168.60.7:/opt/wildfly/standalone/deployments/hello-world-${env.BUILD_NUMBER}.war'"
+                sh "ssh 'root@192.168.60.7' 'touch /opt/wildfly/standalone/deployments/.dodeploy'"
             }
         }
         
