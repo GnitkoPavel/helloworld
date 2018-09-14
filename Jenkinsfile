@@ -40,7 +40,7 @@ pipeline {
         }
         stage('Deploy to wildfly server') {
             steps {
-                sh "scp target/hello-world-war-1.0.0.war 'root@192.168.60.7:/opt/wildfly/standalone/deployments/hello-world-${env.BUILD_NUMBER}.war'"
+                sh "scp target/hello-world-war-1.0.0.war 'root@192.168.60.7:/opt/wildfly/standalone/deployments/hello-world.war'"
                 sh "ssh 'root@192.168.60.7' 'touch /opt/wildfly/standalone/deployments/.dodeploy'"
             }
         }
@@ -61,6 +61,7 @@ pipeline {
                 subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
                 body: """<p>FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
                 <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+                recipientProviders: [developers(), brokenTestsSuspects(), culprits(), requestor()],
                 to: "admin@lawstrust.com"
             )
         }
