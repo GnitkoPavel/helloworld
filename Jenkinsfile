@@ -34,7 +34,7 @@ pipeline {
       emailext (
           body: '''""<p>SUCCESSFUL: Job \'${env.JOB_NAME} [${env.BUILD_NUMBER}]\':</p>
            <p>Check console output at &QUOT;<a href=\'${env.BUILD_URL}\'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""''', 
-          recipientProviders: [developers('pavel.gnitko@ukr.net'), brokenTestsSuspects('pavel.gnitko@gmail.com'), culprits('admin@lawstrust.com'), requestor('pavel.gnitko@mail.ru')], 
+          recipientProviders: [developers(), brokenTestsSuspects(), culprits(), requestor()], 
           subject: 'SUCCESSFUL: Job \'${env.JOB_NAME} [${env.BUILD_NUMBER}]\'', 
           to: 'admin@lawstrust.com'
           )
