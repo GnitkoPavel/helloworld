@@ -35,7 +35,7 @@ pipeline {
         }
         stage('Publish artefactory') {
             steps {
-                sh "mvn clean install"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                sh "curl -uadmin:APB3jbjMzXFGdhFB9e6dsb3787c -T target/hello-world-war-1.0.0.war 'http://192.168.60.8:8081/artifactory/helloworld/hello-world-${env.BUILD_NUMBER}.war'"
             }
         }
         
