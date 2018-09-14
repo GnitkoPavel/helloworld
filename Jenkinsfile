@@ -2,9 +2,11 @@ pipeline {
     agent any
     stages {
         stage('SCM') {
-            cleanWs()
             steps {
-                git url: 'https://github.com/GnitkoPavel/helloworld.git'
+                script {
+                    cleanWs()
+                        git url: 'https://github.com/GnitkoPavel/helloworld.git'
+                }
             }
         }
         stage('Sonarqube') {
