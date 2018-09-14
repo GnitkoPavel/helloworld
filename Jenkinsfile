@@ -28,6 +28,16 @@ pipeline {
                 sh "mvn clean"
             }
         }
+        stage('Build') {
+            steps {
+                sh "mvn clean install"
+            }
+        }
+        stage('Publish artefactory') {
+            steps {
+                sh "mvn clean install"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            }
+        }
         
     }
     post {
