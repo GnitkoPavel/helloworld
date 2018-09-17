@@ -44,14 +44,11 @@ pipeline {
                 def server = Artifactory.newServer url: '$HOST_ART', credentialsId: '079ba046-5260-4ec3-a97e-b65537ef0e19'
                 def uploadSpec = """{
                     "files": [{
-                       "pattern": "path/",
-                       "target": "path/"
+                       "pattern": "target/$WAR_NAME-${env.BUILD_NUMBER}.war",
+                       "target": "helloworld/"
                     }]
                  }"""
-
                  server.upload(uploadSpec)
-                
-                sh "curl -uadmin:AP4ZJb9HkMJN2KAxwnhjRxyqNRf -T target/hello-world-war-1.0.0.war '$HOST_ART/artifactory/helloworld/$WAR_NAME-${env.BUILD_NUMBER}.war'"
             }
         }
         stage('Deploy to wildfly server') {
