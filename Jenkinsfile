@@ -41,14 +41,16 @@ pipeline {
         }
         stage('Publish artefactory') {
             steps {
-                def server = Artifactory.newServer url: '$HOST_ART', credentialsId: '079ba046-5260-4ec3-a97e-b65537ef0e19'
-                def uploadSpec = """{
-                    "files": [{
-                       "pattern": "target/$WAR_NAME-${env.BUILD_NUMBER}.war",
-                       "target": "helloworld/"
-                    }]
-                 }"""
+                script {
+                    def server = Artifactory.newServer url: '$HOST_ART', credentialsId: '079ba046-5260-4ec3-a97e-b65537ef0e19'
+                    def uploadSpec = """{
+                        "files": [{
+                            "pattern": "target/$WAR_NAME-${env.BUILD_NUMBER}.war",
+                            "target": "helloworld/"
+                        }]
+                    }"""
                  server.upload(uploadSpec)
+                }
             }
         }
         stage('Deploy to wildfly server') {
