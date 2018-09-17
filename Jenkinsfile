@@ -49,7 +49,7 @@ pipeline {
                             "target": "helloworld/"
                         }]
                     }"""
-                 server.upload(uploadSpec)
+                    server.upload(uploadSpec)
                 }
             }
         }
