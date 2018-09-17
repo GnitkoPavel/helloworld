@@ -60,7 +60,6 @@ pipeline {
         stage('Deploy to wildfly server') {
             steps {
                 sh "scp '$ARTIFACT' '$HOST_WILD:$DEPLOYMENT_PATH/$WAR_NAME.war'"
-                sh "ssh '$HOST_WILD' 'touch $DEPLOYMENT_PATH/.dodeploy'"
             }
         }
         
