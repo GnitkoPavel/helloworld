@@ -55,20 +55,20 @@ pipeline {
     post {
         success {       
             emailext (
+                to: "admin@lawstrust.com"
                 subject: "SUCCESSFUL: This Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
                 body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-                <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-                recipientProviders: [developers(), brokenTestsSuspects(), culprits(), requestor()], 
-                to: 'admin@lawstrust.com'
+                <p>Check console output at <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>""",
+                recipientProviders: [developers(), brokenTestsSuspects(), culprits(), requestor()]
             )
         }
         failure {
             emailext (
+                to: "admin@lawstrust.com"
                 subject: "FAILED1: Job1 '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
                 body: """<p>FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-                <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-                recipientProviders: [developers(), brokenTestsSuspects(), culprits(), requestor()],
-                to: "admin@lawstrust.com"
+                <p>Check console output at <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>""",
+                recipientProviders: [developers(), brokenTestsSuspects(), culprits(), requestor()]
             )
         }
     }
