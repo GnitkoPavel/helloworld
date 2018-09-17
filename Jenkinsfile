@@ -41,7 +41,7 @@ pipeline {
         }
         stage('Publish artefactory') {
             steps {
-                sh "curl -uadmin:APB3jbjMzXFGdhFB9e6dsb3787c -T target/hello-world-war-1.0.0.war '$HOST_ART/artifactory/helloworld/$WAR_NAME-${env.BUILD_NUMBER}.war'"
+                sh "curl -uadmin:AP4ZJb9HkMJN2KAxwnhjRxyqNRf -T target/hello-world-war-1.0.0.war '$HOST_ART/artifactory/helloworld/$WAR_NAME-${env.BUILD_NUMBER}.war'"
             }
         }
         stage('Deploy to wildfly server') {
