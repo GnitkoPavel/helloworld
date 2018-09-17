@@ -47,7 +47,7 @@ pipeline {
                         "files": [
                             {
                                 "pattern": "target/$WAR_NAME-${env.BUILD_NUMBER}.war",
-                                "target": "helloworld/"
+                                "target": "helloworld1/"
                             }
                         ]
                     }"""
