@@ -4,8 +4,10 @@ pipeline {
         WAR_NAME = 'hello-world' 
         DEPLOYMENT_PATH='/opt/wildfly/standalone/deployments'
         HOST_WILD = 'root@192.168.60.7'
-        HOST_ART = 'http://192.168.60.8:8081'
+        HOST_ART = 'http://192.168.60.8:8081/artifactory'
         MANAGER = 'admin@lawstrust.com'
+        ARTIFACT = 'target/hello-world-war-1.0.0.war'
+        REPOSITORIY = 'helloworld'
     }
     stages {
         stage('SCM') {
@@ -42,12 +44,12 @@ pipeline {
         stage('Publish artefactory') {
             steps {
                 script {
-                    def server = Artifactory.newServer url: 'http://192.168.60.8:8081/artifactory', credentialsId: '079ba046-5260-4ec3-a97e-b65537ef0e19'
+                    def server = Artifactory.server url: 'prudentional'
                     def uploadSpec = """{
                         "files": [
                             {
-                                "pattern": "target/hello-world-war-1.0.0.war",
-                                "target": "helloworld/$WAR_NAME-${env.BUILD_NUMBER}.war"
+                                "pattern": "$ARTIFACT",
+                                "target": "$REPOSITORIY/$WAR_NAME-${env.BUILD_NUMBER}.war"
                             }
                         ]
                     }"""
@@ -57,7 +59,7 @@ pipeline {
         }
         stage('Deploy to wildfly server') {
             steps {
-                sh "scp target/hello-world-war-1.0.0.war 'root@192.168.60.7:/opt/wildfly/standalone/deployments/hello-world.war'"
+                sh "scp '$ARTIFACT' 'root@192.168.60.7:/opt/wildfly/standalone/deployments/hello-world.war'"
                 sh "ssh 'root@192.168.60.7' 'touch /opt/wildfly/standalone/deployments/.dodeploy'"
             }
         }
