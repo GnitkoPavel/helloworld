@@ -64,7 +64,7 @@ pipeline {
         }
         failure {
             emailext (
-                subject: "FAILED: Job1 '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                subject: "FAILED1: Job1 '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
                 body: """<p>FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
                 <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
                 recipientProviders: [developers(), brokenTestsSuspects(), culprits(), requestor()],
