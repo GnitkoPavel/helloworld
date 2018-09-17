@@ -15,6 +15,11 @@ pipeline {
                 }
             }
         }
+        stage('Build') {
+            steps {
+                sh "mvn clean install"
+            }
+        }
         stage('Sonarqube') {
             environment {
                 scannerHome = tool 'SonarQubeScanner'
@@ -32,11 +37,6 @@ pipeline {
             steps {
                 sh "mvn test"
                 sh "mvn clean"
-            }
-        }
-        stage('Build') {
-            steps {
-                sh "mvn clean install"
             }
         }
         stage('Publish artefactory') {
