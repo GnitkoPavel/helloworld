@@ -46,8 +46,8 @@ pipeline {
                     def uploadSpec = """{
                         "files": [
                             {
-                                "pattern": "target/$WAR_NAME-${env.BUILD_NUMBER}.war",
-                                "target": "helloworld1/"
+                                "pattern": "target/hello-world-war-1.0.0.war",
+                                "target": "helloworld/$WAR_NAME-${env.BUILD_NUMBER}.war"
                             }
                         ]
                     }"""
