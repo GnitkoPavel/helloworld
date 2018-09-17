@@ -5,6 +5,7 @@ pipeline {
         DEPLOYMENT_PATH='/opt/wildfly/standalone/deployments'
         HOST_WILD = 'root@192.168.60.7'
         HOST_ART = 'http://192.168.60.8:8081'
+        MANAGER = 'admin@lawstrust.com'
     }
     stages {
         stage('SCM') {
@@ -54,6 +55,7 @@ pipeline {
     post {
         success {       
             emailext (
+                to: "admin@lawstrust.com",
                 to: "admin@lawstrust.com",
                 subject: "SUCCESSFUL: This Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
                 body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
