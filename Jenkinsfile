@@ -44,7 +44,7 @@ pipeline {
         stage('Publish artefactory') {
             steps {
                 script {
-                    def server = Artifactory.server url: 'prudentional'
+                    def server = Artifactory.server 'prudentional'
                     def uploadSpec = """{
                         "files": [
                             {
