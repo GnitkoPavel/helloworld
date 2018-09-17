@@ -36,7 +36,6 @@ pipeline {
         stage('Unit testing') {
             steps {
                 sh "mvn test"
-                sh "mvn clean"
             }
         }
         stage('Publish artefactory') {
