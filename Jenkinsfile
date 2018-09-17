@@ -44,10 +44,12 @@ pipeline {
                 script {
                     def server = Artifactory.newServer url: 'prudentional-artifactory', credentialsId: '079ba046-5260-4ec3-a97e-b65537ef0e19'
                     def uploadSpec = """{
-                        "files": [{
-                            "pattern": "target/$WAR_NAME-${env.BUILD_NUMBER}.war",
-                            "target": "helloworld/"
-                        }]
+                        "files": [
+                            {
+                                "pattern": "target/$WAR_NAME-${env.BUILD_NUMBER}.war",
+                                "target": "helloworld/"
+                            }
+                        ]
                     }"""
                     server.upload(uploadSpec)
                 }
