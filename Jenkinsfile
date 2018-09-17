@@ -42,7 +42,7 @@ pipeline {
         stage('Publish artefactory') {
             steps {
                 script {
-                    def server = Artifactory.newServer url: 'prudentional', credentialsId: '079ba046-5260-4ec3-a97e-b65537ef0e19'
+                    def server = Artifactory.newServer url: 'http://192.168.60.8:8081/artifactory', credentialsId: '079ba046-5260-4ec3-a97e-b65537ef0e19'
                     def uploadSpec = """{
                         "files": [
                             {
