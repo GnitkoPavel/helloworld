@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        maven 'M3'
+    }
     environment {
         WAR_NAME = 'hello-world' 
         DEPLOYMENT_PATH='/opt/wildfly/standalone/deployments'
