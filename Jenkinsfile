@@ -63,19 +63,6 @@ pipeline {
                 }
             }
         }
-        stage('Show info about repository in Artifactory') {
-            steps {
-                script {
-                    def server = Artifactory.server 'prudentional'
-                    def buildInfo = server.publishBuildInfo
-                    def distributionConfig = [
-                        'buildName': buildInfo.name,
-                        'buildNumber': buildInfo.number
-                    ]
-                    server.distribute distributionConfig
-                }
-            }
-        }
         stage('Deploy to wildfly server') {
             steps {
                 sh "scp '${ARTIFACT}' '${HOST_WILD}:${DEPLOYMENT_PATH}/${WAR_NAME}-${env.BUILD_NUMBER}.war'"
