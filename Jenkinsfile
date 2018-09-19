@@ -68,9 +68,9 @@ pipeline {
                 script {
                     def server = Artifactory.server 'prudentional'
                     def distributionConfig = [
-                        'buildName'             : buildInfo.name,
-                        'buildNumber'           : buildInfo.number,
-                        'targetRepo'            : 'dist-repo',
+                        'buildName': buildInfo.name,
+                        'buildNumber': buildInfo.number,
+                        'targetRepo': 'dist-repo'
                     ]
                     server.distribute distributionConfig
                 }
