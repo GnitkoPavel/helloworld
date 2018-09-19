@@ -57,11 +57,9 @@ pipeline {
                         ]
                     }"""
                     server.upload(uploadSpec)
-                    def buildInfo2 = server.upload uploadSpec
-                    server.publishBuildInfo buildInfo2
                     def buildInfo = Artifactory.newBuildInfo()
-                    server.upload spec: uploadSpec, buildInfo: buildInfo2
-                    server.publishBuildInfo buildInfo2
+                    server.upload spec: uploadSpec, buildInfo: buildInfo
+                    server.publishBuildInfo buildInfo
                 }
             }
         }
