@@ -67,6 +67,7 @@ pipeline {
             steps {
                 script {
                     def server = Artifactory.server 'prudentional'
+                    def buildInfo = server.publishBuildInfo
                     def distributionConfig = [
                         'buildName': buildInfo.name,
                         'buildNumber': buildInfo.number
