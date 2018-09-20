@@ -3,6 +3,9 @@ pipeline {
     tools {
         maven 'M3'
     }
+    triggers {
+        githubpush()
+    }
     environment {
         WAR_NAME = 'hello-world' 
         DEPLOYMENT_PATH='/opt/wildfly/standalone/deployments'
