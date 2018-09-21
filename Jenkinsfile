@@ -10,7 +10,7 @@ pipeline {
         HOST_ART = 'http://192.168.60.8:8081/artifactory'
         MANAGER = 'admin@lawstrust.com'
         ARTIFACT = 'target/hello-world-war-1.0.0.war'
-        REPOSITORIY = 'remote-test'
+        REPOSITORIY = 'helloworld'
     }
     stages {
         stage('SCM') {
