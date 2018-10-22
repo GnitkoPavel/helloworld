@@ -1,6 +1,6 @@
-projectKey=notmy:java-sonar-runner-simple
+projectKey=PavloTest
 serverUrl=http://192.168.60.4:9000/sonar
 serverVersion=7.3.0.15553
-dashboardUrl=http://192.168.60.4:9000/sonar/dashboard?id=notmy%3Ajava-sonar-runner-simple
-ceTaskId=AWZsG1v8lSzD-y88UkQp
-ceTaskUrl=http://192.168.60.4:9000/sonar/api/ce/task?id=AWZsG1v8lSzD-y88UkQp
+dashboardUrl=http://192.168.60.4:9000/sonar/dashboard?id=PavloTest
+ceTaskId=AWabzKay6Zant_F_n9hj
+ceTaskUrl=http://192.168.60.4:9000/sonar/api/ce/task?id=AWabzKay6Zant_F_n9hj
