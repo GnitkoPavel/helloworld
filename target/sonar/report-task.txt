@@ -1,0 +1,6 @@
+projectKey=com.efsavage:hello-world-war
+serverUrl=http://192.168.60.4:9000/sonar
+serverVersion=7.3.0.15553
+dashboardUrl=http://192.168.60.4:9000/sonar/dashboard?id=com.efsavage%3Ahello-world-war
+ceTaskId=AWab6F4e6Zant_F_n9ho
+ceTaskUrl=http://192.168.60.4:9000/sonar/api/ce/task?id=AWab6F4e6Zant_F_n9ho
