@@ -2,5 +2,5 @@ projectKey=PavloTest
 serverUrl=http://192.168.60.4:9000/sonar
 serverVersion=7.3.0.15553
 dashboardUrl=http://192.168.60.4:9000/sonar/dashboard?id=PavloTest
-ceTaskId=AWabzKay6Zant_F_n9hj
-ceTaskUrl=http://192.168.60.4:9000/sonar/api/ce/task?id=AWabzKay6Zant_F_n9hj
+ceTaskId=AWacWUTm6Zant_F_n9iA
+ceTaskUrl=http://192.168.60.4:9000/sonar/api/ce/task?id=AWacWUTm6Zant_F_n9iA
